@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require 'mockserver'
+require 'colsole'
+include Colsole
+
+runner = Mockserver::CLI.runner
+
+begin
+  exit runner.run ARGV
+rescue Interrupt
+  say! "\nGoodbye"
+  exit 1
+rescue => e
+  puts e.backtrace.reverse if ENV['DEBUG']
+  say! "rib` #{e.class} `\n#{e.message}"
+  exit 1
+end
