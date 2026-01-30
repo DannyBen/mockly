@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'mister_bin', '~> 0.7'
   s.add_dependency 'puma', '~> 7.1'
   s.add_dependency 'rackup', '~> 2.1'
-  s.add_dependency 'requires', '~> 1.0'
   s.add_dependency 'sinatra', '~> 4.2'
 
   s.metadata = {

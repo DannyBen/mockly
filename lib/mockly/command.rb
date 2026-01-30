@@ -4,7 +4,7 @@ module Mockly
   class Command < MisterBin::Command
     summary 'Start the mock server'
 
-    version VERSION
+    version Mockly::VERSION
 
     usage 'mockly [--port N --host IP --root PATH]'
     usage 'mockly (-h|--help)'
