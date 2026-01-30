@@ -48,4 +48,59 @@ describe Mockserver::App do
       expect(last_response.body).to eq({ 'error' => 'No mock for GET /missing' }.to_json)
     end
   end
+
+  describe 'candidate order' do
+    it 'picks the first matching candidate' do
+      get '/users'
+
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to eq 'application/json'
+      expect(last_response.body).to eq File.read('spec/fixtures/mocks/get-users.json')
+    end
+  end
+
+  describe 'HTTP methods' do
+    {
+      get: 'get-multi.json',
+      post: 'post-multi.json',
+      put: 'put-multi.json',
+      patch: 'patch-multi.json',
+      delete: 'delete-multi.json',
+      options: 'options-multi.json',
+    }.each do |verb, fixture|
+      it "serves #{verb.to_s.upcase} mocks" do
+        send(verb, '/multi')
+
+        expect(last_response.status).to eq(200)
+        expect(last_response.content_type).to eq 'application/json'
+        expect(last_response.body).to eq File.read("spec/fixtures/mocks/#{fixture}")
+      end
+    end
+  end
+
+  describe 'candidate variants' do
+    it 'serves method-prefixed candidate for POST' do
+      post '/candidate1'
+
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to eq 'application/json'
+      expect(last_response.body).to eq File.read('spec/fixtures/mocks/post-candidate1.json')
+    end
+
+    it 'serves method file inside a folder for POST' do
+      post '/candidate2'
+
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to eq 'application/json'
+      expect(last_response.body).to eq File.read('spec/fixtures/mocks/candidate2/post.json')
+    end
+
+    it 'serves base file without method for POST' do
+      post '/candidate3'
+
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to eq 'application/json'
+      expect(last_response.body).to eq File.read('spec/fixtures/mocks/candidate3.json')
+    end
+  end
 end
