@@ -1,0 +1,11 @@
+== Sinatra (v4.2.1) has taken the stage on 10 for production with backup from Puma
+Puma starting in single mode...
+* Puma version: 7.2.0 ("On The Corner")
+* Ruby version: ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]
+*  Min threads: 0
+*  Max threads: 5
+*  Environment: development
+*          PID: ...
+== Sinatra has ended his set (crowd applauds)
+ Errno::EACCES 
+Permission denied - bind(2) for "0.0.0.0" port 10

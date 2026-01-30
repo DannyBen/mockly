@@ -19,7 +19,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'puma', '~> 7.1'
   s.add_dependency 'rackup', '~> 2.1'
   s.add_dependency 'requires', '~> 1.0'
-  s.add_dependency 'sinatra', '>= 3.0', '< 5'
+  s.add_dependency 'sinatra', '~> 4.2'
+  s.add_dependency 'mime-types', '~> 3.6'
 
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/mockserver/issues',

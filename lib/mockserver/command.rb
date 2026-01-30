@@ -4,6 +4,8 @@ module Mockserver
   class Command < MisterBin::Command
     summary 'Start the mock server'
 
+    version VERSION
+
     usage 'mockserver [--port N --host IP --root PATH]'
     usage 'mockserver (-h|--help)'
 
@@ -12,7 +14,16 @@ module Mockserver
     option '-r --root PATH', 'Root mocks directory [default: ./mocks]'
 
     def run
-      puts "ok"
+      port = (args['--port']).to_i
+      host = args['--host']
+      mock_root = File.expand_path args['--root']
+
+      App.set :bind, host
+      App.set :port, port
+      App.set :mock_root, mock_root
+      App.set :asset_root, File.join(mock_root, 'assets')
+
+      App.run!
     end
   end
 end
