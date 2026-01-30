@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    image: dannyben/mockly
+    volumes: 
+      - ./spec/fixtures/mocks:/app/mocks
+    ports: 
+      - 3000:3000
