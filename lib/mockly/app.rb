@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'json'
 require 'mime/types'
 
-module Mockserver
+module Mockly
   class App < Sinatra::Base
     configure do
       set :bind, '0.0.0.0'

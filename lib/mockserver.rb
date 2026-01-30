@@ -1,2 +1,0 @@
-require 'requires'
-requires 'mockserver'

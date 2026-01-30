@@ -1,7 +1,7 @@
 require 'rack/test'
 require 'json'
 
-describe Mockserver::App do
+describe Mockly::App do
   let(:mock_root) { File.expand_path('../fixtures/mocks', __dir__) }
 
   before do

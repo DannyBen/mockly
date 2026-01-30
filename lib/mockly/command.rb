@@ -1,13 +1,13 @@
 require 'mister_bin'
 
-module Mockserver
+module Mockly
   class Command < MisterBin::Command
     summary 'Start the mock server'
 
     version VERSION
 
-    usage 'mockserver [--port N --host IP --root PATH]'
-    usage 'mockserver (-h|--help)'
+    usage 'mockly [--port N --host IP --root PATH]'
+    usage 'mockly (-h|--help)'
 
     option '-p --port N', 'Port number [default: 3000]'
     option '-b --host IP', 'Binding address [default: 0.0.0.0]'

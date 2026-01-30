@@ -1,4 +1,4 @@
-describe Mockserver::Command do
+describe Mockly::Command do
   subject { described_class.new }
 
   describe '--help' do
@@ -12,11 +12,11 @@ describe Mockserver::Command do
     it 'applies the requested config and starts the server' do
       mock_root = File.expand_path('tmp')
 
-      expect(Mockserver::App).to receive(:set).with(:bind, '127.0.0.1')
-      expect(Mockserver::App).to receive(:set).with(:port, 4000)
-      expect(Mockserver::App).to receive(:set).with(:mock_root, mock_root)
-      expect(Mockserver::App).to receive(:set).with(:asset_root, File.join(mock_root, 'assets'))
-      expect(Mockserver::App).to receive(:run!)
+      expect(Mockly::App).to receive(:set).with(:bind, '127.0.0.1')
+      expect(Mockly::App).to receive(:set).with(:port, 4000)
+      expect(Mockly::App).to receive(:set).with(:mock_root, mock_root)
+      expect(Mockly::App).to receive(:set).with(:asset_root, File.join(mock_root, 'assets'))
+      expect(Mockly::App).to receive(:run!)
 
       subject.execute %w[--port 4000 --host 127.0.0.1 --root tmp]
     end

@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
-require 'mockserver'
+require 'mockly'
 require 'colsole'
 include Colsole
 
-runner = Mockserver::CLI.runner
+runner = Mockly::CLI.runner
 
 begin
   exit runner.run ARGV

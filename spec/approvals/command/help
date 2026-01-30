@@ -1,8 +1,8 @@
 Start the mock server
 
 Usage:
-  mockserver [--port N --host IP --root PATH]
-  mockserver (-h|--help)
+  mockly [--port N --host IP --root PATH]
+  mockly (-h|--help)
 
 Options:
   -p --port N

@@ -1,9 +1,9 @@
 require 'mister_bin'
 
-module Mockserver
+module Mockly
   class CLI
     def self.runner
-      MisterBin::Runner.new header: 'Mockserver - Server for API Testing',
+      MisterBin::Runner.new header: 'Mockly - Mock Server for API Testing',
         handler: Command
     end
   end

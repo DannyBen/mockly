@@ -11,7 +11,7 @@ end
 require 'bundler'
 Bundler.require :default, :development, :test
 
-require 'mockserver'
+require 'mockly'
 
 # Consistent Colsole output (for rspec_fixtures)
 ENV['TTY'] = 'off'

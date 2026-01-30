@@ -1,7 +1,7 @@
-describe 'bin/mockserver' do
+describe 'bin/mockly' do
   context 'when an exception occurs' do
     it 'errors gracefully' do
-      expect(`bin/mockserver --port 10 2>&1`)
+      expect(`bin/mockly --port 10 2>&1`)
         .to match_approval('cli/exception')
         .except(/PID: (.*)/, 'PID: ...')
     end

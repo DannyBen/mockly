@@ -1,10 +1,12 @@
-require 'mockserver/version'
-require 'pretty_trace/enable-trim'
-require 'debug' rescue nil
+require 'mockly/version'
+begin
+  require 'debug'
+rescue LoadError
+end
 
-title   "Mockserver Runfile"
-summary "Runfile tasks for building the Mockserver gem"
+title   "Mockly Runfile"
+summary "Runfile tasks for building the Mockly gem"
 
 import_gem 'runfile-tasks/gem'
-import_gem 'runfile-tasks/docker', image: 'dannyben/mockserver', version: Mockserver::VERSION
+import_gem 'runfile-tasks/docker', image: 'dannyben/mockly', version: Mockly::VERSION
 import 'debug'
