@@ -15,12 +15,13 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.required_ruby_version = '>= 3.2'
 
+  s.add_dependency 'json', '~> 2.18'
+  s.add_dependency 'mime-types', '~> 3.6'
   s.add_dependency 'mister_bin', '~> 0.7'
   s.add_dependency 'puma', '~> 7.1'
   s.add_dependency 'rackup', '~> 2.1'
   s.add_dependency 'requires', '~> 1.0'
   s.add_dependency 'sinatra', '~> 4.2'
-  s.add_dependency 'mime-types', '~> 3.6'
 
   s.metadata = {
     'bug_tracker_uri'       => 'https://github.com/DannyBen/mockserver/issues',

@@ -18,7 +18,15 @@ ENV['TTY'] = 'off'
 ENV['COLUMNS'] = '80'
 ENV['LINES'] = '30'
 
+module RSpecMixin
+  include Rack::Test::Methods
+
+  def app = described_class
+end
+
 RSpec.configure do |config|
+  config.include RSpecMixin
+  
   config.example_status_persistence_file_path = 'spec/status.txt'
   config.strip_ansi_escape = true
   config.filter_run_excluding :noci if ENV['CI']

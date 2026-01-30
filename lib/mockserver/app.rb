@@ -37,13 +37,6 @@ module Mockserver
       def resolve_mock(path, method)
         candidates(path, method).find { |file| File.file?(file) }
       end
-
-      def resolve_asset(path)
-        file = File.expand_path path, settings.asset_root
-        return nil unless file.start_with?(settings.asset_root)
-
-        File.file?(file) ? file : nil
-      end
     end
 
     %w[GET POST PUT PATCH DELETE OPTIONS].each do |verb|
