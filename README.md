@@ -1,6 +1,6 @@
 # Mockly - Tiny API Mock Server
 
-![repocard](repocard.svg)
+![repocard](https://repocard.dannyben.com/svg/mockly.svg)
 
 Mockly is a small, file-based API mock server for local testing. It is
 designed to allow replacing an API server when testing any tool that uses a
