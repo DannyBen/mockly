@@ -6,8 +6,8 @@ Mockly is a small, file-based API mock server for local testing. It is
 designed to allow replacing an API server when testing any tool that uses a
 JSON API.
 
-Configuring endpoints is done by placing JSON files in a simple directory
-structure.
+Configuring endpoints can be done either by placing JSON files in a simple
+directory structure, or by defining routes in a lightweight `index.yml`.
 
 ## Install
 
@@ -87,6 +87,36 @@ Examples:
 Static files are also supported: if an exact file exists under `mocks/`, it is
 served as-is (e.g. `GET /assets/image.jpg` → `mocks/assets/image.jpg`).
 
+## Easy Mode (`index.yml`)
+
+You can define simple routes in `mocks/index.yml` (or `mocks/index.yaml`) using
+keys in the form `METHOD /path`.
+
+```yaml
+GET /:
+  status: running
+
+GET /users:
+  users:
+    - id: 1
+      name: Jane
+
+POST /login:
+  token: abc123
+```
+
+Route values can be objects, arrays, scalars, booleans, etc. Responses are
+returned as JSON.
+
+Lookup precedence is:
+
+1. Exact static file in `mocks/`
+2. JSON file candidates in `mocks/`
+3. Route in `index.yml` / `index.yaml`
+4. 404 JSON error
+
+If both `mocks/index.yml` and a project-root `index.yml` exist, the one in
+`mocks/` is preferred.
 
 ## Contributing / Support
 
