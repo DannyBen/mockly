@@ -17,28 +17,6 @@ module Mockly
       content_type 'application/json'
     end
 
-    helpers do
-      def candidates(path, method)
-        clean = path.gsub(%r{/$}, '')
-        base = File.basename(clean)
-        dir = File.dirname(clean)
-        method_tag = method.downcase
-
-        dir = '' if dir == '.'
-        full_dir = dir.empty? ? settings.mock_root : "#{settings.mock_root}/#{dir}"
-
-        [
-          "#{full_dir}/#{method_tag}-#{base}.json",
-          "#{full_dir}/#{base}/#{method_tag}.json",
-          "#{full_dir}/#{base}.json",
-        ]
-      end
-
-      def resolve_mock(path, method)
-        candidates(path, method).find { |file| File.file?(file) }
-      end
-    end
-
     %w[GET POST PUT PATCH DELETE OPTIONS].each do |verb|
       send(verb.downcase, '/*') do
         req_path = params['splat'].first
@@ -50,8 +28,14 @@ module Mockly
           return send_file exact
         end
 
-        file = resolve_mock req_path, request.request_method
-        return File.read file if file
+        router = Mockly::Router.new(mock_root: settings.mock_root)
+        route = router.resolve(
+          req_path: req_path,
+          method: request.request_method,
+          request_path: request.path,
+        )
+
+        return route if route
 
         status 404
         JSON.dump error: "No mock for #{request.request_method} #{request.path}"

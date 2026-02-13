@@ -1,4 +1,5 @@
 require 'mockly/version'
+require 'mockly/router'
 require 'mockly/app'
 require 'mockly/command'
 require 'mockly/cli'
