@@ -30,9 +30,9 @@ module Mockly
 
         router = Mockly::Router.new(mock_root: settings.mock_root)
         route = router.resolve(
-          req_path: req_path,
-          method: request.request_method,
-          request_path: request.path,
+          req_path:     req_path,
+          method:       request.request_method,
+          request_path: request.path
         )
 
         return route if route

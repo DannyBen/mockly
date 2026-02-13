@@ -24,7 +24,7 @@ module Mockly
 
     def resolve_from_config(method, path)
       config = route_config
-      key = route_lookup_keys(method, path).find { |candidate| config.key?(candidate) }
+      key = route_lookup_keys(method, path).find { |candidate| config.has_key?(candidate) }
       return nil unless key
 
       JSON.dump config[key]
@@ -59,7 +59,7 @@ module Mockly
       file = route_index_files.find { |candidate| File.file?(candidate) }
       return {} unless file
 
-      data = YAML.safe_load(File.read(file), permitted_classes: [], aliases: true) || {}
+      data = YAML.safe_load_file(file, permitted_classes: [], aliases: true) || {}
       data.is_a?(Hash) ? data : {}
     rescue Psych::Exception
       {}

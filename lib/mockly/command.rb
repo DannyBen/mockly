@@ -14,7 +14,7 @@ module Mockly
     option '-r --root PATH', 'Root mocks directory [default: ./mocks]'
 
     def run
-      port = (args['--port']).to_i
+      port = args['--port'].to_i
       host = args['--host']
       mock_root = File.expand_path args['--root']
 
