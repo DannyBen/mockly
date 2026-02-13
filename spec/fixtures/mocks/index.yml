@@ -1,0 +1,13 @@
+GET /yaml-object:
+  status: ok
+
+GET /yaml-scalar: hello
+
+POST /yaml-post:
+  created: true
+
+GET /slash:
+  path: normalized
+
+GET /users:
+  source: index-yml
